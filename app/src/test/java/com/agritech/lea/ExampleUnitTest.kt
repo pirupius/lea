@@ -1,4 +1,4 @@
-package com.agritech.lea.accounts
+package com.agritech.lea
 
 import org.junit.Test
 

@@ -1,4 +1,4 @@
-package com.agritech.lea.accounts
+package com.agritech.lea
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
