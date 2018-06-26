@@ -5,25 +5,28 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.widget.FrameLayout
 import android.support.design.widget.BottomNavigationView
-import com.agritech.lea.fragments.DashboardFragment
 import com.agritech.lea.fragments.HomeFragment
 import com.agritech.lea.fragments.ProfileFragment
+import com.agritech.lea.fragments.TrackerFragment
+import com.agritech.lea.utils.SessionManager
 
 class MainActivity : AppCompatActivity() {
 
     private var content: FrameLayout? = null
 
+    internal var session: SessionManager? = null
+
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_home -> {
 
-                val fragment = HomeFragment.Companion.newInstance()
+                val fragment = HomeFragment()
                 addFragment(fragment)
 
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_dashboard -> {
-                val fragment = DashboardFragment()
+            R.id.navigation_tracker -> {
+                val fragment = TrackerFragment()
                 addFragment(fragment)
                 return@OnNavigationItemSelectedListener true
             }
@@ -41,11 +44,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+//        session = SessionManager(applicationContext)
+//        session!!.checkLogin()
+
+//        if (!session!!.isLoggedIn) {
+//            finish()
+//        }
+
         content = findViewById(R.id.content)
         val navigation = findViewById<BottomNavigationView>(R.id.navigation)
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
-        val fragment = HomeFragment.Companion.newInstance()
+        val fragment = HomeFragment()
         addFragment(fragment)
     }
 
