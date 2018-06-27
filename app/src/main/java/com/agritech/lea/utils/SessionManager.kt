@@ -38,7 +38,6 @@ class SessionManager(internal var _context: Context) {
     //phone, email, district, location
     fun createLoginSession(name: String, gender: String, phone: String, email: String, district: String, location: String) {
         editor.putBoolean(KEY_ID, true)
-//        editor.putString(KEY_ID, id)
         editor.putString(KEY_NAME, name)
         editor.putString(KEY_GENDER, gender)
         editor.putString(KEY_PHONE, phone)

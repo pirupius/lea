@@ -17,8 +17,8 @@ import com.agritech.lea.AppController;
 import com.agritech.lea.AppInterface;
 import com.agritech.lea.MainActivity;
 import com.agritech.lea.R;
-import com.agritech.lea.models.NewsItem;
-import com.agritech.lea.models.NewsItemAdapter;
+import com.agritech.lea.models.SupplierItem;
+import com.agritech.lea.models.SupplierItemAdapter;
 import com.android.volley.Cache;
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -38,47 +38,44 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment implements AppInterface {
+public class SuppliersFragment extends Fragment implements AppInterface {
 
     private static final String TAG = MainActivity.class.getCanonicalName();
-    private RecyclerView news_list;
+    private RecyclerView supplier_list;
     private ProgressDialog pDialog;
-    private NewsItemAdapter newsAdapter;
-    private List<NewsItem> mItems;
-
-    Button scan_photo;
+    private SupplierItemAdapter supplierAdapter;
+    private List<SupplierItem> mItems;
 
     ArrayList<HashMap<String, String>> newList;
 
-    public HomeFragment() {
+    public SuppliersFragment() {
         // Required empty public constructor
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-
-        scan_photo = (Button) rootView.findViewById(R.id.scan_photo);
+        View rootView = inflater.inflate(R.layout.fragment_suppliers, container, false);
 
         newList = new ArrayList<HashMap<String, String>>();
 
-        news_list = (RecyclerView) rootView.findViewById(R.id.news_list);
+        supplier_list = (RecyclerView) rootView.findViewById(R.id.supplier_list);
 
-        mItems = new ArrayList<NewsItem>();
+        mItems = new ArrayList<SupplierItem>();
 
-        newsAdapter = new NewsItemAdapter(mItems);
+        supplierAdapter = new SupplierItemAdapter(mItems);
 
-        news_list.setHasFixedSize(true);
+        supplier_list.setHasFixedSize(true);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
-        news_list.setLayoutManager(mLayoutManager);
-        news_list.setItemAnimator(new DefaultItemAnimator());
-        news_list.setAdapter(newsAdapter);
+        supplier_list.setLayoutManager(mLayoutManager);
+        supplier_list.setItemAnimator(new DefaultItemAnimator());
+        supplier_list.setAdapter(supplierAdapter);
 
         // We first check for cached request
         Cache cache = AppController.getInstance().getRequestQueue().getCache();
-        Cache.Entry entry = cache.get(news);
+        Cache.Entry entry = cache.get(suppliers);
         if (entry != null) {
             // fetch the data from cache
             try {
@@ -101,7 +98,7 @@ public class HomeFragment extends Fragment implements AppInterface {
 
             // making fresh volley request and getting json
             JsonObjectRequest jsonReq = new JsonObjectRequest(Request.Method.GET,
-                    news, null, new Response.Listener<JSONObject>() {
+                    suppliers, null, new Response.Listener<JSONObject>() {
 
                 @Override
                 public void onResponse(JSONObject response) {
@@ -132,28 +129,27 @@ public class HomeFragment extends Fragment implements AppInterface {
      * */
     private void parseJsonFeed(JSONObject response) {
         try {
-            JSONArray newsArray = response.getJSONArray("news");
+            JSONArray newsArray = response.getJSONArray("suppliers");
             hidePDialog();
 
             for (int i = 0; i < newsArray.length(); i++) {
                 JSONObject feedObj = (JSONObject) newsArray.get(i);
 
-                NewsItem news = new NewsItem();
+                SupplierItem suppliers = new SupplierItem();
 
-                news.setId(feedObj.getString("id"));
-                news.setTitle(feedObj.getString("title"));
-                news.setDate("Posted on " + feedObj.getString("created_at"));
-                news.setBrief(feedObj.getString("brief"));
-
-                //news.setDate(feedObj.getString("mdate"));
-//                String rd = feedObj.getString("mdate");
-//                news.setDate("Release date: " + rd);
-
-                mItems.add(news);
+                suppliers.setId(feedObj.getString("id"));
+                suppliers.setName(feedObj.getString("name"));
+                suppliers.setLocation(
+                        feedObj.getString("village") + " - " + feedObj.getString("subcounty") +
+                                ", " + feedObj.getString("district")
+                );
+                suppliers.setChemicals("Pesticides: " + feedObj.getString("pesticides"));
+                suppliers.setPhone(feedObj.getString("phone"));
+                mItems.add(suppliers);
             }
 
             // notify data changes to list adapater
-            newsAdapter.notifyDataSetChanged();
+            supplierAdapter.notifyDataSetChanged();
 
         } catch (JSONException e) {
             e.printStackTrace();

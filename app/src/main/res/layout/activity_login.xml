@@ -20,7 +20,6 @@
         <EditText
             android:id="@+id/phone_number"
             android:hint="Enter Your phone number"
-            android:textColor="#6bfff7"
             android:textColorHint="#52afaa"
             android:textAlignment="center"
             android:layout_width="match_parent"

@@ -5,9 +5,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.widget.FrameLayout
 import android.support.design.widget.BottomNavigationView
-import com.agritech.lea.fragments.HomeFragment
-import com.agritech.lea.fragments.ProfileFragment
-import com.agritech.lea.fragments.TrackerFragment
+import com.agritech.lea.fragments.*
 import com.agritech.lea.utils.SessionManager
 
 class MainActivity : AppCompatActivity() {
@@ -20,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.navigation_home -> {
 
-                val fragment = HomeFragment()
+                val fragment = ForumFragment()
                 addFragment(fragment)
 
                 return@OnNavigationItemSelectedListener true
@@ -30,8 +28,13 @@ class MainActivity : AppCompatActivity() {
                 addFragment(fragment)
                 return@OnNavigationItemSelectedListener true
             }
+            R.id.navigation_suppliers -> {
+                val fragment = SuppliersFragment()
+                addFragment(fragment)
+                return@OnNavigationItemSelectedListener true
+            }
             R.id.navigation_notifications -> {
-                val fragment = ProfileFragment()
+                val fragment = HomeFragment()
                 addFragment(fragment)
                 return@OnNavigationItemSelectedListener true
             }
@@ -55,7 +58,7 @@ class MainActivity : AppCompatActivity() {
         val navigation = findViewById<BottomNavigationView>(R.id.navigation)
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
-        val fragment = HomeFragment()
+        val fragment = ForumFragment()
         addFragment(fragment)
     }
 

@@ -45,5 +45,5 @@ public class NewsItem {
     }
 
     public String getBrief() { return brief; }
-    public void setGenre(String brief) { this.brief = brief; }
+    public void setBrief(String brief) { this.brief = brief; }
 }
