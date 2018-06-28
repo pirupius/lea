@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.navigation_home -> {
 
-                val fragment = ForumFragment()
+                val fragment = HomeFragment()
                 addFragment(fragment)
 
                 return@OnNavigationItemSelectedListener true
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_notifications -> {
-                val fragment = HomeFragment()
+                val fragment = ForumFragment()
                 addFragment(fragment)
                 return@OnNavigationItemSelectedListener true
             }
@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
         val navigation = findViewById<BottomNavigationView>(R.id.navigation)
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
-        val fragment = ForumFragment()
+        val fragment = HomeFragment()
         addFragment(fragment)
     }
 

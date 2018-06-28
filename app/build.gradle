@@ -8,7 +8,7 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.agritech.lea"
-        minSdkVersion 14
+        minSdkVersion 19
         targetSdkVersion 27
         versionCode 1
         versionName "0.1"
@@ -19,6 +19,13 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        buildTypes.each {
+            it.buildConfigField 'String', 'API_KEY', "\"AIzaSyDqXMscOVHDro5dG2aTVQwmus01BnlmYas\""
+        }
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
     }
 }
 
@@ -40,6 +47,11 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:2.3.0"
 
     implementation 'com.karumi:dexter:4.2.0'
+
+    //google vision
+    implementation 'com.google.api-client:google-api-client-android:1.23.0' exclude module: 'httpclient'
+    implementation 'com.google.http-client:google-http-client-gson:1.23.0' exclude module: 'httpclient'
+    implementation 'com.google.apis:google-api-services-vision:v1-rev369-1.23.0'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
