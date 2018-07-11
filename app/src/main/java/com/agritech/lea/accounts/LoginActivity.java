@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.agritech.lea.MainActivity;
 import com.agritech.lea.R;
 import com.agritech.lea.SelectLanguage;
 import com.agritech.lea.utils.SessionManager;
@@ -22,11 +21,10 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         session = new SessionManager(getApplicationContext());
-//        session.checkLogin();
 
-//        if(session.isLoggedIn()){
-//            finish();
-//        }
+        if(session.isLoggedIn()){
+            finish();
+        }
 
         btn_login = (Button) findViewById(R.id.btn_submit);
         btn_register = (Button) findViewById(R.id.btn_register);
@@ -34,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                session.createLoginSession("Test", "Male", "0752100100", "demo@lea.test", "Kampala", "Kiira");
+                session.createLoginSession("1","Test", "Male", "0752100100", "demo@lea.test", "Kampala", "Kiira");
 
                 // Launch login activity
                 Intent intent = new Intent(getApplicationContext(), SelectLanguage.class);

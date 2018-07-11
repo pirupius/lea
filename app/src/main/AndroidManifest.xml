@@ -19,16 +19,18 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".accounts.LoginActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".accounts.LoginActivity" />
         <activity android:name=".accounts.RegisterActivity" />
         <activity android:name=".SelectLanguage" />
+
+        <activity android:name=".activities.ImageAnalysisActivity"/>
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -40,7 +42,6 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".activities.ImageAnalysisActivity"></activity>
     </application>
 
 </manifest>

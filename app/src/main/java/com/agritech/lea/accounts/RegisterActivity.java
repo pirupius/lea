@@ -42,6 +42,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 session.createLoginSession(
+                        "1",
                         name.getText().toString(),
                         "Male",
                         phone.getText().toString(),
