@@ -11,6 +11,7 @@ import android.widget.FrameLayout;
 
 import com.agritech.lea.fragments.ForumFragment;
 import com.agritech.lea.fragments.HomeFragment;
+import com.agritech.lea.fragments.ProfileFragment;
 import com.agritech.lea.fragments.SuppliersFragment;
 import com.agritech.lea.fragments.TrackerFragment;
 import com.agritech.lea.utils.SessionManager;
@@ -62,6 +63,10 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_notifications:
                     fragment = new ForumFragment();
+                    loadFragment(fragment);
+                    return true;
+                case R.id.navigation_profile:
+                    fragment = new ProfileFragment();
                     loadFragment(fragment);
                     return true;
             }

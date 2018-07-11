@@ -2,7 +2,7 @@ package com.agritech.lea;
 
 public interface AppInterface {
 
-    String login = "http://leaug.herokuapp.com/api/login";
+    String login = "http://leaug.herokuapp.com/api/login?phone=";
 
     String news = "http://leaug.herokuapp.com/api/news";
     String suppliers = "http://leaug.herokuapp.com/api/suppliers";
