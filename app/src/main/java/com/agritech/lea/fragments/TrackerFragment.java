@@ -1,13 +1,11 @@
 package com.agritech.lea.fragments;
 
 
-import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,7 +13,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +20,7 @@ import com.agritech.lea.AppController;
 import com.agritech.lea.AppInterface;
 import com.agritech.lea.MainActivity;
 import com.agritech.lea.R;
+import com.agritech.lea.activities.PlantingDateActivity;
 import com.agritech.lea.models.TrackerItem;
 import com.agritech.lea.models.TrackerItemAdapter;
 import com.android.volley.Cache;
@@ -37,14 +35,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 
-public class TrackerFragment extends Fragment implements DatePickerDialog.OnDateSetListener, AppInterface {
+public class TrackerFragment extends Fragment implements AppInterface {
+
     TextView start_date;
     FloatingActionButton fab;
 
@@ -71,8 +67,12 @@ public class TrackerFragment extends Fragment implements DatePickerDialog.OnDate
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "You cannot edit the date at the moment.", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+//                Snackbar.make(view, "You cannot edit the date at the moment.", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+
+                Intent intent = new Intent(getActivity(), PlantingDateActivity.class);
+                startActivity(intent);
+
             }
         });
 
@@ -141,39 +141,6 @@ public class TrackerFragment extends Fragment implements DatePickerDialog.OnDate
         return rootView;
     }
 
-    public void datePicker(View view){
-        DatePickerFragment fragment = new DatePickerFragment();
-        fragment.show(getFragmentManager(), "date");
-    }
-
-    private void setDate(final Calendar calendar) {
-        final DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM);
-        start_date.setText(dateFormat.format(calendar.getTime()));
-
-    }
-
-    @Override
-    public void onDateSet(DatePicker view, int year, int month, int day) {
-        Calendar cal = new GregorianCalendar(year, month, day);
-        setDate(cal);
-    }
-
-    public static class DatePickerFragment extends DialogFragment {
-
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-
-            final Calendar c = Calendar.getInstance();
-            int year = c.get(Calendar.YEAR);
-            int month = c.get(Calendar.MONTH);
-            int day = c.get(Calendar.DAY_OF_MONTH);
-
-            return new DatePickerDialog(
-                    getActivity(),
-                   (DatePickerDialog.OnDateSetListener) getActivity(),
-                    year, month, day);
-        }
-    }
 
     /**
      * Parsing json reponse and passing the data to feed view list adapter
@@ -210,5 +177,4 @@ public class TrackerFragment extends Fragment implements DatePickerDialog.OnDate
             pDialog = null;
         }
     }
-
 }

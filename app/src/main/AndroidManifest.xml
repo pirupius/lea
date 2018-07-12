@@ -29,8 +29,7 @@
         <activity android:name=".accounts.LoginActivity" />
         <activity android:name=".accounts.RegisterActivity" />
         <activity android:name=".SelectLanguage" />
-
-        <activity android:name=".activities.ImageAnalysisActivity"/>
+        <activity android:name=".activities.ImageAnalysisActivity" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -42,6 +41,7 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
+        <activity android:name=".activities.PlantingDateActivity"></activity>
     </application>
 
 </manifest>
