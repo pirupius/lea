@@ -37,7 +37,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SuppliersFragment extends Fragment implements AppInterface {
+public class SpecialistsFragment extends Fragment implements AppInterface {
 
     private static final String TAG = MainActivity.class.getCanonicalName();
     private RecyclerView supplier_list;
@@ -47,7 +47,7 @@ public class SuppliersFragment extends Fragment implements AppInterface {
 
     ArrayList<HashMap<String, String>> newList;
 
-    public SuppliersFragment() {
+    public SpecialistsFragment() {
         // Required empty public constructor
     }
 
@@ -56,7 +56,7 @@ public class SuppliersFragment extends Fragment implements AppInterface {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_suppliers, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_specialists, container, false);
 
         newList = new ArrayList<HashMap<String, String>>();
 
