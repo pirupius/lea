@@ -5,7 +5,11 @@ public interface AppInterface {
     String login = "http://leaug.herokuapp.com/api/login?phone=";
 
     String news = "http://leaug.herokuapp.com/api/news";
+
     String suppliers = "http://leaug.herokuapp.com/api/suppliers";
+    String agronomists = "http://leaug.herokuapp.com/api/agronomists";
+    String extension_workers = "http://leaug.herokuapp.com/api/extension_workers";
+
     String tracker = "http://leaug.herokuapp.com/api/tracker?date=";
 
     // Gallery directory name to store the images

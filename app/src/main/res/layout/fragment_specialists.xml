@@ -14,29 +14,23 @@
             android:id="@+id/suppliers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp"
+            android:padding="30dp"
             android:text="Suppliers" />
 
         <Button
             android:id="@+id/agromists"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp"
+            android:padding="30dp"
             android:text="Agronomists" />
 
         <Button
             android:id="@+id/workers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp"
+            android:padding="30dp"
             android:text="Extension Workers" />
 
-        <android.support.v7.widget.RecyclerView
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/supplier_list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbars="vertical" />
     </LinearLayout>
 
 </FrameLayout>
