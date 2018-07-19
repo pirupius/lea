@@ -28,7 +28,8 @@ public class SessionManager {
     public static final String KEY_EMAIL = "email";
     public static final String KEY_DISTRICT = "district";
     public static final String KEY_LOCATION = "location";
-	
+    public static final String KEY_PLANTING_DATE = "planting_date";
+
 	// Constructor
 	public SessionManager(Context context){
 		this._context = context;
@@ -54,7 +55,16 @@ public class SessionManager {
 		editor.putString(KEY_LOCATION, location);
 
 		editor.commit();
-	}	
+	}
+
+    /**
+     * accepts a date and start planting date
+     * @param planting_date
+     */
+	public void addPlantingDate(String planting_date) {
+	    editor.putString(KEY_PLANTING_DATE, planting_date);
+	    editor.commit();
+    }
 	
 	/**
 	 * Check login method wil check user login status
@@ -90,6 +100,7 @@ public class SessionManager {
         user.put(KEY_EMAIL, pref.getString(KEY_EMAIL, null));
         user.put(KEY_DISTRICT, pref.getString(KEY_DISTRICT, null));
         user.put(KEY_LOCATION, pref.getString(KEY_LOCATION, null));
+        user.put(KEY_PLANTING_DATE, pref.getString(KEY_PLANTING_DATE, null));
 
 		// return user
 		return user;

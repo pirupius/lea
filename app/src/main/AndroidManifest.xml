@@ -41,12 +41,15 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".activities.PlantingDateActivity" />
         <activity
             android:name=".activities.SuppliersActivity"
             android:label="Suppliers" />
-        <activity android:name=".activities.AgroExpertsActivity" />
-        <activity android:name=".activities.ExtensionWorkersActivity"></activity>
+        <activity
+            android:name=".activities.AgroExpertsActivity"
+            android:label="Agro Experts" />
+        <activity
+            android:name=".activities.ExtensionWorkersActivity"
+            android:label="Extension Workers" />
     </application>
 
 </manifest>
