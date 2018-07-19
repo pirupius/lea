@@ -44,7 +44,9 @@
         <activity android:name=".activities.PlantingDateActivity" />
         <activity
             android:name=".activities.SuppliersActivity"
-            android:label="Suppliers"/>
+            android:label="Suppliers" />
+        <activity android:name=".activities.AgroExpertsActivity" />
+        <activity android:name=".activities.ExtensionWorkersActivity"></activity>
     </application>
 
 </manifest>

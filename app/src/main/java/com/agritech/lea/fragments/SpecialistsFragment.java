@@ -11,6 +11,8 @@ import android.widget.Button;
 import com.agritech.lea.AppInterface;
 import com.agritech.lea.MainActivity;
 import com.agritech.lea.R;
+import com.agritech.lea.activities.AgroExpertsActivity;
+import com.agritech.lea.activities.ExtensionWorkersActivity;
 import com.agritech.lea.activities.SuppliersActivity;
 
 /**
@@ -40,8 +42,24 @@ public class SpecialistsFragment extends Fragment implements AppInterface {
         suppliers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), SuppliersActivity.class);
-                startActivity(i);
+                Intent i1 = new Intent(getActivity(), SuppliersActivity.class);
+                startActivity(i1);
+            }
+        });
+
+        agromists.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i2 = new Intent(getActivity(), AgroExpertsActivity.class);
+                startActivity(i2);
+            }
+        });
+
+        workers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i3 = new Intent(getActivity(), ExtensionWorkersActivity.class);
+                startActivity(i3);
             }
         });
 
