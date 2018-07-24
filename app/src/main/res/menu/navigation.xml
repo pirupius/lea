@@ -17,12 +17,7 @@
         android:title="@string/title_suppliers"/>
 
     <item
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_forum"
         android:icon="@drawable/ic_chat_black_24dp"
         android:title="@string/title_forum"/>
-
-    <item
-        android:id="@+id/navigation_profile"
-        android:icon="@drawable/ic_profile_black_24dp"
-        android:title="@string/title_profile"/>
 </menu>

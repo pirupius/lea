@@ -1,17 +1,20 @@
 package com.agritech.lea;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
+import com.agritech.lea.activities.ProfileActivity;
 import com.agritech.lea.fragments.ForumFragment;
 import com.agritech.lea.fragments.HomeFragment;
-import com.agritech.lea.fragments.ProfileFragment;
 import com.agritech.lea.fragments.SpecialistsFragment;
 import com.agritech.lea.fragments.TrackerFragment;
 import com.agritech.lea.utils.SessionManager;
@@ -61,12 +64,8 @@ public class MainActivity extends AppCompatActivity {
                     fragment = new SpecialistsFragment();
                     loadFragment(fragment);
                     return true;
-                case R.id.navigation_notifications:
+                case R.id.navigation_forum:
                     fragment = new ForumFragment();
-                    loadFragment(fragment);
-                    return true;
-                case R.id.navigation_profile:
-                    fragment = new ProfileFragment();
                     loadFragment(fragment);
                     return true;
             }
@@ -89,6 +88,26 @@ public class MainActivity extends AppCompatActivity {
         transaction.replace(R.id.content, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.navigation_profile:
+                Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
 }
