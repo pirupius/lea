@@ -60,8 +60,11 @@ public class ImageAnalysisActivity extends AppCompatActivity {
     public static final int CAMERA_PERMISSIONS_REQUEST = 2;
     public static final int CAMERA_IMAGE_REQUEST = 3;
 
-    private TextView mImageDetails;
+    private TextView mImageDetails, results;
     private ImageView mMainImage;
+
+    private static String analysis_text;
+    private static StringBuilder army_worm_detection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +82,7 @@ public class ImageAnalysisActivity extends AppCompatActivity {
         });
 
         mImageDetails = findViewById(R.id.image_details);
+        results = findViewById(R.id.results);
         mMainImage = findViewById(R.id.main_image);
     }
 
@@ -307,8 +311,20 @@ public class ImageAnalysisActivity extends AppCompatActivity {
         List<EntityAnnotation> labels = response.getResponses().get(0).getLabelAnnotations();
         if (labels != null) {
             for (EntityAnnotation label : labels) {
-                message.append(String.format(Locale.US, "%.3f: %s", label.getScore(), label.getDescription()));
-                message.append("\n");
+//                message.append(String.format(Locale.US, "%.3f: %s", label.getScore(), label.getDescription()));
+//                message.append("\n");
+
+                if ("maize".matches(label.getDescription())) {
+                    message.append(String.format(Locale.US, "%.3f: %s", label.getScore(), "Maize - Grass Family"));
+                }
+
+                if ("grass".matches(label.getDescription())) {
+                    message.append(String.format(Locale.US, "%.3f: %s", label.getScore(), "Maize - Grass Family"));
+                }
+
+                if ("pathology".matches(label.getDescription())) {
+                    message.append(String.format(Locale.US, "%.3f: %s", label.getScore(), "Army worm"));
+                }
             }
         } else {
             message.append("nothing");

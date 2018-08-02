@@ -24,6 +24,12 @@
             android:layout_height="200dp"
             android:scaleType="fitCenter"/>
 
+        <TextView
+            android:id="@+id/results"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"/>
+
     </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
@@ -32,7 +38,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:src="@android:drawable/ic_menu_gallery"
-        android:layout_margin="16dp"
-        android:onClick="datePicker" />
+        android:layout_margin="16dp" />
 
 </android.support.design.widget.CoordinatorLayout>

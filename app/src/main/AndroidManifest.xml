@@ -50,7 +50,9 @@
         <activity
             android:name=".activities.ExtensionWorkersActivity"
             android:label="Extension Workers" />
-        <activity android:name=".activities.ProfileActivity"></activity>
+        <activity
+            android:name=".activities.ProfileActivity"
+            android:label="Profile Settings"/>
     </application>
 
 </manifest>
